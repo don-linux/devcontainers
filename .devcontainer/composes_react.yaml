@@ -1,5 +1,5 @@
 services:
-  django:
+  react:
     volumes:
       - ../../../:/workspaces:cached
    
