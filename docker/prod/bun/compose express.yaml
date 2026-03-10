@@ -1,0 +1,13 @@
+name: ${DOCKER_PROD_NAME}
+
+services:
+  express:
+    build:
+      context: ../../
+      dockerfile: docker/prod/Dockerfile
+    volumes:
+      - ../../:/app
+    ports:
+      - '${DOCKER_PROD_EXPRESS_PORT}:5000'
+    command: bash -c "bun install --frozen-lockfile && bun start"
+    init: true

@@ -1,17 +1,16 @@
 {
-  "name": "react-dev",
+  "name": "express-dev",
   "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
-  "service": "react",
+  "service": "express",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "remoteUser": "root",
   "overrideCommand": false,
-  "forwardPorts": [3000],
+  "forwardPorts": [5000],
   "postCreateCommand": "npm ci || npm install",
-  "postStartCommand": "PORT=3000 npm start",
+  "postStartCommand": "npm run dev",
   "customizations": {
     "vscode": {
       "extensions": [
-        "dsznajder.es7-react-js-snippets",
         "esbenp.prettier-vscode",
         "christian-kohler.path-intellisense",
         "PKief.material-icon-theme",

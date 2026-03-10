@@ -1,16 +1,13 @@
 name: ${DOCKER_DEV_NAME}
 
 services:
-  vuejs:
+  express:
     build:
       context: ../../
       dockerfile: docker/dev/Dockerfile
     volumes:
       - ../../:/app
-    environment:
-      CHOKIDAR_USEPOLLING: 'true'
-      WATCHPACK_POLLING: 'true'
     ports:
       - '${DOCKER_DEV_EXPRESS_PORT}:5000'
-    command: bash -c "npm install && npm start"
+    command: bash -c "bun install && bun run dev"
     init: true

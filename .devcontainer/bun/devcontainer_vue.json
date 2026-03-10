@@ -1,0 +1,29 @@
+{
+  "name": "vue-dev",
+  "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
+  "service": "vuejs",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "root",
+  "overrideCommand": false,
+  "forwardPorts": [5173],
+  "postCreateCommand": "bun install --frozen-lockfile || bun install",
+  "postStartCommand": "bun run dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "esbenp.prettier-vscode",
+        "christian-kohler.path-intellisense",
+        "PKief.material-icon-theme",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-containers",
+        "christian-kohler.npm-intellisense"
+      ]
+    }
+  }
+}

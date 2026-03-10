@@ -1,0 +1,13 @@
+name: ${DOCKER_DEV_NAME}
+
+services:
+  vuejs:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - ../../:/app
+    ports:
+      - '${DOCKER_DEV_VUEJS_PORT}:5173'
+    command: bash -c "npm install && npm run dev"
+    init: true

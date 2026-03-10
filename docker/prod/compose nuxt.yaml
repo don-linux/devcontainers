@@ -1,7 +1,7 @@
 name: ${DOCKER_PROD_NAME}
 
 services:
-  express:
+  nuxt:
     build:
       context: ../../
       dockerfile: docker/prod/Dockerfile
