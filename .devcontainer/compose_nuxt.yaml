@@ -1,5 +1,5 @@
 services:
-  react:
+  nuxt:
     volumes:
       - ../../../:/workspaces:cached
    

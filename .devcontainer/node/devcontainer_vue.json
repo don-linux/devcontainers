@@ -3,13 +3,27 @@
   "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
   "service": "vuejs",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "remoteUser": "root",
+  "remoteUser": "node",
   "overrideCommand": false,
   "forwardPorts": [5173],
   "postCreateCommand": "npm ci || npm install",
   "postStartCommand": "npm run dev",
+  "remoteEnv": {
+    "SHELL": "/bin/bash"
+  },
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          }
+        },
+        "terminal.integrated.automationProfile.linux": {
+          "path": "/bin/bash"
+        }
+      },
       "extensions": [
         "Vue.volar",
         "esbenp.prettier-vscode",

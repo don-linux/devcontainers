@@ -8,6 +8,6 @@ services:
     volumes:
       - ../../:/app
     ports:
-      - '${DOCKER_DEV_NUXT_PORT}:5173'
+      - '${DOCKER_DEV_NUXT_PORT}:3000'
     command: bash -c "bun install && bun run dev"
     init: true
