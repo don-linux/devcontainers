@@ -1,16 +1,13 @@
 {
-  "name": "nuxt-dev",
-  "dockerComposeFile": [
-    "../docker/dev/docker-compose.yml",
-    "docker-compose.yml"
-  ],
-  "service": "nuxt",
+  "name": "react-dev",
+  "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
+  "service": "react",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "remoteUser": "bun",
+  "remoteUser": "node",
   "overrideCommand": false,
   "forwardPorts": [3000],
-  "postCreateCommand": "bun install --frozen-lockfile || bun install",
-  "postStartCommand": "bun run dev",
+  "postCreateCommand": "npm ci || npm install",
+  "postStartCommand": "npm run dev",
   "remoteEnv": {
     "SHELL": "/bin/bash"
   },
@@ -28,7 +25,7 @@
         }
       },
       "extensions": [
-        "Nuxtr.nuxt-vscode-extentions",
+        "dsznajder.es7-react-js-snippets",
         "esbenp.prettier-vscode",
         "christian-kohler.path-intellisense",
         "PKief.material-icon-theme",

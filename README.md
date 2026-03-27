@@ -1,53 +1,51 @@
 # Devcontainers templates
 
-Repositorio de plantillas Docker para levantar entornos de desarrollo y despliegue
+Plantillas de `Docker` y `Dev Containers` para preparar entornos reutilizables de desarrollo y base de despliegue.
 
-## Para que sirve
+## Qué organiza
 
-- Centraliza configuraciones reutilizables de contenedores.
-- Separa plantillas de desarrollo y producción.
-- Permite trabajar con distintos runtimes y stacks frontend/backend sin recrear la base Docker cada vez.
+- Configuraciones listas para `Dev Containers`.
+- Plantillas Docker separadas por entorno, runtime y stack.
+- Una base reutilizable para no rehacer contenedores en cada proyecto.
 
-## Estructura
+## Estructura actual
 
-### Raiz
+La organización nueva agrupa todo por carpeta, no por archivos sueltos al mismo nivel.
 
-- `docker/`: plantillas principales del proyecto.
+Ruta base:
 
-### `docker/dev/`
+`docker/{dev|prod}/{runtime}/{stack}/`
 
-Plantillas orientadas a desarrollo local.
+```text
+.devcontainer/
+  bun/
+    express/ nuxt/ react/ vue/
+  node/
+    express/ nuxt/ react/ vue/
+  django/
 
-- `bun/`: entorno de desarrollo basado en Bun.
-- `node/`: entorno de desarrollo basado en Node.js.
+docker/
+  dev/
+    bun/
+      express/ nuxt/ react/ vue/
+    node/
+      express/ nuxt/ react/ vue/
+  prod/
+    bun/
+      express/ nuxt/ react/ vue/
+    node/
+      express/ nuxt/ react/ vue/
+```
 
-Archivos habituales en cada runtime:
+## Qué hay en cada zona
 
-- `Dockerfile ...`: imagen base para los stacks soportados.
-- `compose *.yaml`: composiciones Docker por framework o tipo de app.
-
-### `docker/prod/`
-
-Plantillas orientadas a ejecucion o despliegue.
-
-- `Dockerfile express`: imagen para Express con Node.js.
-- `Dockerfile express bun`: imagen para Express con Bun.
-- `Dockerfile vuejs_nuxt_react`: imagen para apps frontend con Node.js.
-- `Dockerfile vuejs_nuxt_react bun`: imagen para apps frontend con Bun.
-- `compose *.yaml`: composiciones para cada stack soportado.
-- `.env.example`: variables de entorno de ejemplo.
+- `.devcontainer/`: configuración para abrir el proyecto dentro del editor con contenedores.
+- `docker/dev/`: plantillas orientadas a desarrollo local.
+- `docker/prod/`: plantillas orientadas a build y ejecución.
+- Cada stack en `docker/` agrupa normalmente `Dockerfile`, `compose` y `.env.example`.
 
 ## Soporte actual
 
-### Runtimes
-
-- Node.js
-- Bun
-
-### Frameworks y stacks
-
-- Express
-- Django
-- React
-- Vue.js
-- Nuxt
+- Runtimes: `Node.js`, `Bun`
+- Stacks con plantillas Docker: `Express`, `Nuxt`, `React`, `Vue`
+- Stack adicional en `Dev Containers`: `Django`
