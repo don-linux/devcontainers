@@ -3,6 +3,7 @@
   "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
   "service": "vuejs",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerUser": "node",
   "remoteUser": "node",
   "overrideCommand": false,
   "forwardPorts": [5173],

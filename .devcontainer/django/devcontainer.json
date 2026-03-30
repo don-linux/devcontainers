@@ -3,6 +3,7 @@
   "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
   "service": "django",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerUser": "python",
   "remoteUser": "python",
   "overrideCommand": false,
   "forwardPorts": [8000],

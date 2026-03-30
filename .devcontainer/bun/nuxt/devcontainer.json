@@ -3,6 +3,7 @@
   "dockerComposeFile": ["../docker/dev/compose.yaml", "compose.yaml"],
   "service": "nuxt",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerUser": "bun",
   "remoteUser": "bun",
   "overrideCommand": false,
   "forwardPorts": [3000],
