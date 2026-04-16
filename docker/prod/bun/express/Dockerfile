@@ -1,9 +1,26 @@
-FROM oven/bun:1.3.11-alpine
-
-# Useful toolchain for projects with node-gyp
-RUN apk add --no-cache openssh-client
+# Stage 1: Build the application
+FROM oven/bun:1.3.12-alpine
 
 WORKDIR /app
 
-# devcontainer keeps it alive and then executes postStartCommand
-CMD ["sleep", "infinity"]
+# Copy package files
+COPY package.json bun.lock ./
+
+# Install dependencies
+RUN bun install --frozen-lockfile --production
+
+# Copy source code
+COPY index.mjs ./
+COPY src ./src
+
+# Set ownership and permissions
+RUN chown -R bun:bun /app
+
+# Switch to non-root user
+USER bun
+
+EXPOSE 5000
+
+ENV NODE_ENV=production
+
+CMD ["bun", "run", "start"]

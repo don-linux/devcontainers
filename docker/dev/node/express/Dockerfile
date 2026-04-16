@@ -1,6 +1,6 @@
-FROM node:24.14.0-alpine3.23
+FROM node:24.15.0-alpine3.23
 
-RUN apk add --no-cache git openssh-client bash
+RUN apk add --no-cache git openssh-client bash wget
 
 WORKDIR /app
 
