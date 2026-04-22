@@ -1,10 +1,16 @@
-FROM oven/bun:1.3.12-alpine
+FROM oven/bun:1.3.13-alpine
 
-RUN apk add --no-cache git openssh-client bash wget
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+RUN apk add --no-cache git openssh-client bash wget shadow
+
+RUN if [ "$USER_GID" != "$(id -g bun)" ]; then groupmod -g "$USER_GID" bun; fi \
+ && if [ "$USER_UID" != "$(id -u bun)" ]; then usermod  -u "$USER_UID" bun; fi \
+ && mkdir -p /app/node_modules \
+ && chown -R bun:bun /app
 
 WORKDIR /app
-
-RUN chown bun:bun /app
 
 USER bun
 

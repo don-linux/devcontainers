@@ -1,26 +1,23 @@
-# Stage 1: Build the application
-FROM oven/bun:1.3.12-alpine
+FROM oven/bun:1.3.13-alpine
 
 WORKDIR /app
+ENV NODE_ENV=production
 
 # Copy package files
-COPY package.json bun.lock ./
+COPY --chown=bun:bun package.json bun.lock ./
 
 # Install dependencies
-RUN bun install --frozen-lockfile --production
+RUN bun install --frozen-lockfile --production && bun pm cache rm
 
 # Copy source code
-COPY index.mjs ./
-COPY src ./src
-
-# Set ownership and permissions
-RUN chown -R bun:bun /app
+COPY --chown=bun:bun index.mjs ./
+COPY --chown=bun:bun src ./src
 
 # Switch to non-root user
 USER bun
 
+# Expose the port
 EXPOSE 5000
 
-ENV NODE_ENV=production
-
-CMD ["bun", "run", "start"]
+# Start the application
+CMD ["bun", "index.mjs"]

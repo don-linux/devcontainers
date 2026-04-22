@@ -7,7 +7,7 @@
   "remoteUser": "node",
   "overrideCommand": false,
   "forwardPorts": [5173],
-  "postCreateCommand": "npm ci || npm install",
+  "postCreateCommand": "npm install",
   "postStartCommand": "npm run dev",
   "remoteEnv": {
     "SHELL": "/bin/bash"

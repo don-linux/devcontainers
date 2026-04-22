@@ -5,9 +5,16 @@ services:
     build:
       context: ../../
       dockerfile: docker/dev/Dockerfile
+      args:
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
     volumes:
       - ../../:/app
+      - node_modules:/app/node_modules
     ports:
       - '${DOCKER_DEV_NUXT_PORT}:3000'
     command: bash -c "bun install && bun run dev"
     init: true
+
+volumes:
+  node_modules:
