@@ -3,7 +3,7 @@ FROM node:24.15.0-alpine3.23
 ARG USER_UID=1000
 ARG USER_GID=1000
 
-RUN apk add --no-cache git openssh-client bash wget shadow
+RUN apk add --no-cache bash libstdc++ wget git openssh-client shadow
 
 RUN if [ "$USER_GID" != "$(id -g node)" ]; then groupmod -g "$USER_GID" node; fi \
  && if [ "$USER_UID" != "$(id -u node)" ]; then usermod  -u "$USER_UID" node; fi \
